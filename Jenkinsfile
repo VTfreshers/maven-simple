@@ -6,6 +6,7 @@ pipeline {
 			     echo "Building the sourcecode"
 			 }
 		}
+	    stage ('test'){	
 		parallel {
 			stage ('test: integration-&-quality') {
 				 steps {
@@ -23,6 +24,7 @@ pipeline {
 			  		}
 			}
 		}
+	    }
 		stage ('approval') {
 			  steps {
 			      echo "Approval"
