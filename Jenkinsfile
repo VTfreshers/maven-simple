@@ -1,18 +1,35 @@
-pipeline
-{
-    agent any
-    stages {
-                stage ('fetching_code') {
-                    //echo 'fetching the code from Git hub'
-                }
-                stage ('Building') {
-                    //echo 'mvn clean install running'
-                }
-                stage ('test') {
-                    //echo 'testing the package'
-                }
-                stage ('deploy') {
-                    //
-                }
-     } //closing stages
-}//closing pipeline
+pipeline {
+	agent any
+	stages {
+	    stage ('build') {
+			 steps {
+			     echo "Building the sourcecode"
+			 }
+		}
+		stage ('test: integration-&-quality') {
+			 steps {
+			     echo "Testing is in progresss"
+			 }
+		}
+		stage ('test: functional') {
+			 steps {
+			     echo "Functional test is going on"
+			 }
+		}
+		stage ('test: load-&-security') {
+			  steps {
+			      echo "Load & Security"
+			  }
+		}
+		stage ('approval') {
+			  steps {
+			      echo "Approval"
+			  }
+		}
+		stage ('deploy:prod') {
+			  steps {
+			      echo "deploy"
+			  }
+		}
+	}
+}
