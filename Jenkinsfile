@@ -6,20 +6,22 @@ pipeline {
 			     echo "Building the sourcecode"
 			 }
 		}
-		stage ('test: integration-&-quality') {
-			 steps {
-			     echo "Testing is in progresss"
-			 }
-		}
-		stage ('test: functional') {
-			 steps {
-			     echo "Functional test is going on"
-			 }
-		}
-		stage ('test: load-&-security') {
-			  steps {
-			      echo "Load & Security"
-			  }
+		parallel {
+			stage ('test: integration-&-quality') {
+				 steps {
+			     		echo "Testing is in progresss"
+			 	}
+			}
+			stage ('test: functional') {
+				 steps {
+			     		echo "Functional test is going on"
+			 		}
+			}
+			stage ('test: load-&-security') {
+				  steps {
+			      		echo "Load & Security"
+			  		}
+			}
 		}
 		stage ('approval') {
 			  steps {
